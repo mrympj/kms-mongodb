@@ -5,19 +5,16 @@ from tkinter import messagebox
 from datetime import datetime
 
 
-# برقراری اتصال با دیتابیس MongoDB با استفاده از احراز هویت
 fname = quote_plus('dbadmin')
 password = quote_plus('dbImp!14@2')
 uri = 'mongodb://%s:%s@78.38.35.219:27017/' % (fname, password)
 client = MongoClient(uri)
 
-# انتخاب یک دیتابیس
 db = client['G2']
 
-# انتخاب یک کالکشن (جدول)
 collection = db['activity']
 LAST_ROW = 0
-# تابعی برای درج یک سند جدید در دیتابیس
+
 def insert_document():
     #publish_date = datetime.now()
     publish_date = publish_date_entry.get()
@@ -71,7 +68,6 @@ def get_user_activities():
         messagebox.showinfo('عملیات ناموفق', 'فعالیتی برای کاربر با شناسه مورد نظر یافت نشد.')
         return
     
-    # نمایش اطلاعات فعالیت‌ها در یک پنجره جدید
     activities_window = tk.Toplevel(window)
     activities_window.title("فعالیت‌های کاربر")
     
